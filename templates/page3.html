@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@500&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+    <h1 class="webtitle6">{{ title }}</h1>
+    <form method="post" action="{{ url_for('page3') }}">
+    <div class="container4">
+    <div class="selectbar">
+        <label for="whatspecies">物種</label>
+        <select class="s s2" name="whatspecies" id="whatspecies">
+            <option value="" disabled>物種</option>
+            <option value="0">未知</option>
+            {% for species in species_names %}
+                <option value="{{ species.species_id }}">{{ species.species_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="selectbar">
+        <label for="whatbreed">品種</label>
+        <select class="s s2" name="whatbreed" id="whatbreed">
+            <option value="" disabled>品種</option>
+            <option value="0">未知</option>
+            {% for breeds in breed_names %}
+                <option value="{{ breeds.breed_id }}">{{ breeds.breed_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="selectbar">
+        <label for="whatcolor">毛色</label>
+        <select class="s s2" name="whatcolor" id="whatcolor">
+            <option value="" disabled>毛色</option>
+            <option value="0">未知</option>
+            {% for colors in color_names %}
+                <option value="{{ colors.color_id }}">{{ colors.color_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="selectbar">
+        <label for="whatgender">性別</label>
+        <select class="s s2" name="whatgender" id="whatgender">
+            <option value="" disabled>性別</option>
+            <option value="0">未知</option>
+            <option value="公">公</option>
+            <option value="母">母</option>
+        </select>
+    </div>
+
+    <div class="selectbar">
+        <label for="whatcity">縣市</label>
+        <select class="s s2" name="whatcity" id="whatcity">
+            <option value="" disabled>縣市</option>
+            <option value="0">未知</option>
+            {% for cities in city_names %}
+                <option value="{{ cities.city_id }}">{{ cities.city_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="selectbar">
+        <label for="whatarea">鄉鎮區</label>
+        <select class="s s2" name="whatarea" id="whatarea">
+            <option value="" disabled>鄉鎮區</option>
+            <option value="0">未知</option>
+            {% for regions in region_names %}
+                <option value="{{ regions.region_id}}">{{ regions.region_name }}</option>
+            {% endfor %}
+        </select>
+    </div>
+
+    <div class="datetime-row">
+        <label for="whatdate">日期</label>
+        <input type="date" name="whatdate" id="whatdate">
+    </div>
+    <div class="container7">
+    <button class="b3"type="submit">查詢</button>
+    <button class="b3" name="selection" value ="back" type="submit">回到首頁</button>
+    </div>
+    </form>
+    </div>
+    {% if found_animals or stray_animals %}
+    <div class="container5">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>類型</th>
+                    <th>動物編號</th>
+                    <th>物種</th>
+                    <th>品種</th>
+                    <th>毛色</th>
+                    <th>性別</th>
+                    <th>縣市</th>
+                    <th>鄉鎮區</th>
+                    <th>日期</th>
+                    <th>已解決</th>
+                    <th>聯絡人</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for animal in found_animals %}
+                    <tr class="found">
+                        <td>拾獲</td>
+                        <td>{{ animal.found_id }}</td>
+                        <td>{{ animal.species_name }}</td>
+                        <td>{{ animal.breed_name }}</td>
+                        <td>{{ animal.color_name }}</td>
+                        <td>{{ animal.found_gender }}</td>
+                        <td>{{ animal.city_name }}</td>
+                        <td>{{ animal.region_name }}</td>
+                        <td>{{ animal.date }}</td>
+                        <td>{{ animal.solved }}</td>
+                        <td>{{ animal.user_email }}</td>
+                    </tr>
+                {% endfor %}
+                {% for animal in stray_animals %}
+                    <tr class="lost">
+                        <td>遺失</td>
+                        <td>{{ animal.stray_id }}</td>
+                        <td>{{ animal.species_name }}</td>
+                        <td>{{ animal.breed_name }}</td>
+                        <td>{{ animal.color_name }}</td>
+                        <td>{{ animal.stray_gender }}</td>
+                        <td>{{ animal.city_name }}</td>
+                        <td>{{ animal.region_name }}</td>
+                        <td>{{ animal.date }}</td>
+                        <td>{{ animal.solved }}</td>
+                        <td>{{ animal.user_email }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        
+    </div>
+    {% else %}
+            <p>查無結果或尚未開始查詢!</p>
+    {% endif %}
+</body>
+</html>

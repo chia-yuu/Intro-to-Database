@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        if (window.jQuery) {
+            console.log("jQuery is loaded!");
+        } else {
+            console.log("jQuery failed to load!");
+        }
+    </script>
+    <script src="{{ url_for('static', filename='styles.js') }}" defer></script>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='cat.png') }}" alt="Cat Image">
+        <h1 class="webtitle2">{{ title }}</h1>
+        <img src="{{ url_for('static', filename='dog.png') }}" alt="Dog Image">
+    </div>
+
+    <form action="{{ url_for('submit_form') }}" method="post">
+        <!-- Row 1: Dropdown menus 1-4 -->
+        <div class="row">
+            <div class="sel sel--black-panther" data-title="類型">
+                <select name="select-type" id="select-type">
+                    <option value="" disabled>類型</option>
+                    <option value="lost">遺失</option>
+                    <option value="found">拾獲</option>
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-spieces" id="select-spieces" onchange="updateBreeds()">
+                    <option value="" disabled>物種</option>
+                    {% for species in species_names %}
+                        <option value="{{ species.species_id }}">{{ species.species_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-breed" id="select-breed">
+                    <option value="" disabled>品種</option>
+                    {% for breeds in breed_names %}
+                        <option value="{{ breeds.breed_id }}">{{ breeds.breed_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-color" id="select-color">
+                    <option value="" disabled>毛色</option>
+                    {% for colors in color_names %}
+                        <option value="{{ colors.color_id }}">{{ colors.color_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <!-- Row 2: Dropdown menus 5-8 -->
+        <div class="row">
+            <div class="sel sel--black-panther">
+                <select name="select-gender" id="select-gender">
+                    <option value="" disabled>性別</option>
+                    <option value="公">公</option>
+                    <option value="母">母</option>
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-resolved" id="select-resolved">
+                    <option value="" disabled>已解決</option>
+                    <option value="否">否</option>
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-city" id="select-city">
+                    <option value="" disabled>縣市</option>
+                    {% for cities in city_names %}
+                        <option value="{{ cities.city_id }}">{{ cities.city_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="sel sel--black-panther">
+                <select name="select-area" id="select-area">
+                    <option value="" disabled>鄉鎮區</option>
+                    {% for regions in region_names %}
+                        <option value="{{ regions.region_id}}">{{ regions.region_name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <!-- Row 3: Datetime input and button -->
+        <div class="row datetime-row">
+            <input type="datetime-local" name="select-date" id="select-date">
+            <a href="{{ url_for('index') }}"><button>繳交</button></a>
+        </div>
+    </form>
+
+</body>
+
+</html>

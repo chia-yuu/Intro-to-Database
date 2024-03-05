@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        if (window.jQuery) {
+            console.log("jQuery is loaded!");
+        } else {
+            console.log("jQuery failed to load!");
+        }
+    </script>
+    <script src="{{ url_for('static', filename='styles.js') }}" defer></script>
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div class="header">
+        <img src="{{ url_for('static', filename='cat.png') }}" alt="Cat Image">
+        <h1 class="webtitle2">{{ title }}</h1>
+        <img src="{{ url_for('static', filename='dog.png') }}" alt="Dog Image">
+    </div>
+
+    <form action="{{ url_for('update') }}" method="post">
+        <!-- Row 1: Dropdown menus 1-4 -->
+        <div class="selectbar">
+            <select name = "done" id = "done">
+                <option value="" disabled>已解決</option>
+                {% for stray in request_stray %}
+                    <option value="{{ stray.stray_id }}">{{ stray.stray_id }} - {{ stray.species_name}} - {{stray.breed_name}}  - {{stray.color_name}}</option>
+                {% endfor %}
+            </select>
+                <button class="b3"type="submit">提交</button>
+                <button class="b3" name="selection" value ="back" type="submit">回到前頁</button>
+        </div>
+        <!-- Row 3: Datetime input and button -->
+        
+    </form>
+</body>
+
+</html>

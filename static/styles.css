@@ -1,0 +1,641 @@
+/* static/styles.css */
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.horizontal-form {
+    display: flex;
+    flex-direction: row;
+}
+
+label
+{
+    font-family: 'Noto Serif TC', serif;
+}
+
+.webtitle
+{
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 5px;
+    font-size: 120px;
+    margin-bottom: 30px;
+}
+
+.webtitle5
+{
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 5px;
+    font-size: 90px;
+    margin-bottom: 30px;
+}
+
+.webtitle2
+{
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 5px;
+    font-size: 70px;
+    order: -1; /* Move the title to the top */
+    align-self: flex-start; /* Align the title to the top left */
+    margin-top: 0px; /* Add margin to the top */
+    margin-left: 20px;
+}
+
+.webtitle3{
+  font-size: 60px;
+  font-family: 'Noto Serif TC', serif;
+}
+
+.webtitle4{
+  font-size: 60px;
+  font-family: 'Noto Serif TC', serif;
+  margin-top: -340px;
+  margin-bottom: 5px;
+}
+
+.webtitle6{
+  font-size: 60px;
+  font-family: 'Noto Serif TC', serif;
+  margin-top: -15px;
+  margin-bottom: 5px;
+}
+
+form {
+    display: flex;
+    flex-direction: row;
+}
+
+.b3{
+  margin-top: -15px;
+}
+
+button {
+    margin-right: 25px;
+    margin-left: 25px;
+    padding: 10px 20px; 
+    font-size: 16px;
+    font-family: 'Fira Code', monospace;
+    font-family: 'Noto Serif TC', serif;
+}
+
+.website {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* CSS */
+.button-56 {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  margin-right: 25px;
+  margin-left: 25px;
+  padding: 10px 20px; 
+  font-size: 16px;
+  font-family: 'Fira Code', monospace;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 16px;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-56:after {
+  background-color: #111;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-56:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-56:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.button-56:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-56 {
+    padding: 0 40px;
+  }
+}
+
+.sel {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 3em 2em;
+    width: 190px;
+    background-color: transparent;
+    position: relative;
+    cursor: pointer;
+    margin-bottom: 85px;
+  }
+  
+  .sel::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 12px 8px 0 8px; /* Adjusted the first value for a taller triangle */
+    border-color: #74a5ef transparent transparent transparent;
+    right: 20px;
+    top: calc(50% - 6px); /* Adjusted the top position to center the taller triangle */
+}
+
+  
+  .sel.active::before {
+    transform: rotateX(-180deg);
+  }
+  
+  .sel__placeholder {
+    display: block;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.4em;
+    color: #838e95;
+    padding: 0.2em 0.5em;
+    text-align: left;
+    pointer-events: none;
+    user-select: none;
+    visibility: visible;
+  }
+  
+  .sel.active .sel__placeholder {
+    visibility: hidden;
+  }
+  
+  .sel__placeholder::before {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0.2em 0.5em;
+    content: attr(data-placeholder);
+    visibility: hidden;
+  }
+  
+  .sel.active .sel__placeholder::before {
+    visibility: visible;
+  }
+  
+  .sel__box {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: -4px;
+    display: none;
+    list-style-type: none;
+    text-align: left;
+    font-size: 1em;
+    background-color: #FFF;
+    width: calc(100% + 8px);
+    max-height: 100px; /* Set a maximum height for the dropdown */
+    overflow-y: auto; /* Enable vertical scrolling */
+    box-sizing: border-box;
+  }
+  
+  .sel.active .sel__box {
+    display: block;
+    animation: fadeInUp 500ms;
+  }
+  
+  .sel__box__options {
+    display: list-item;
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.2em;
+    color: #838e95;
+    padding: 0.5em 1em;
+    user-select: none;
+  }
+  
+  .sel__box__options::after {
+    font-size: 0.5em;
+    margin-left: 5px;
+    display: none;
+  }
+  
+  .sel__box__options.selected::after {
+    display: inline;
+  }
+  
+  .sel__box__options:hover {
+    background-color: #ebedef;
+  }
+  
+  /* ----- Select Box Black Panther ----- */
+  .sel {
+    border-bottom: 4px solid rgba(0, 0, 0, 0.3);
+  }
+  
+  .sel--black-panther {
+    z-index: 3;
+    font-family: 'Noto Serif TC', serif;
+  }
+  
+  /* ----- Select Box Superman ----- */
+  .sel--superman {
+  /*   display: none; */
+    z-index: 2;
+  }
+  
+  /* ===== Keyframes ===== */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translate3d(0, 20px, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+
+
+
+
+input[type="datetime-local"] {
+    font-size: 0.9em;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+  
+    /* Set font color */
+    color: #333;
+  
+    font-family: 'Noto Serif TC', serif;
+    /* Set background color */
+    background-color: #f5f5f5;
+    width: 180px;
+    height: 70px;
+  }
+  
+  /* Style the calendar picker indicator for better visibility */
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+    cursor: pointer;
+  }
+  
+  /* Optional: Adjust appearance on focus */
+  input[type="datetime-local"]:focus {
+    box-shadow: 0 0 5px #74a5ef;
+  }
+  
+  /* Style the selected date */
+  input[type="datetime-local"]::-webkit-datetime-edit-month-field:focus,
+  input[type="datetime-local"]::-webkit-datetime-edit-day-field:focus,
+  input[type="datetime-local"]::-webkit-datetime-edit-year-field:focus {
+    color: #fff; /* Font color when a date is selected */
+    background-color: #74a5ef; /* Background color when a date is selected */
+  }
+  
+  .header {
+    display: flex;
+    align-items: center; /* Align items vertically */
+}
+
+.webtitle2 {
+    font-family: 'Noto Serif TC', serif;
+    letter-spacing: 5px;
+    font-size: 70px;
+    margin-top: 0px;
+    margin-left: 20px;
+}
+
+.header img {
+    max-width: 50px; /* Adjust the max-width according to your preference */
+    margin: 0 10px; /* Add margin to separate the images from the title */
+}
+
+.header img:first-child {
+    order: -1; /* Move the cat image to the left */
+}
+
+.row .datetime-row {
+  display: flex;
+  align-items: center;
+}
+
+.row.datetime-row input[type="datetime-local"] {
+  font-size: 0.9em;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  color: #333;
+  font-family: 'Noto Serif TC', serif;
+  background-color: #f5f5f5;
+  width: 180px;
+  height: 40px; /* Adjust the height to your preference */
+  margin-right: 15px; /* Adjust the margin between the datetime input and the button */
+  margin-bottom: 130px;
+  margin-top: 30px;
+}
+
+.form__group {
+  margin-bottom: 15px;
+  margin-right: 100px;
+}
+
+.form__label {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.0rem;
+  margin-left: 2rem;
+  margin-top: 0.7rem;
+  display: block;
+  transition: all 0.3s;
+  transform: translateY(0rem);
+}
+
+.form__input {
+  font-family: 'Noto Serif TC', serif;
+  color: #333;
+  font-size: 1.0rem;
+	margin: 0 auto;
+  padding: 1.5rem 2rem;
+  border-radius: 0.2rem;
+  background-color: rgb(250, 224, 238);
+  border: none;
+  width: 290px;
+  display: block;
+  border-bottom: 0.0rem solid transparent;
+  transition: all 0.3s;
+  height: 10px;
+}
+
+.form__input:valid {
+  border-color: rgb(203, 199, 241);  /* 设置有效时的边框颜色 */
+  background-color: rgb(203, 199, 241); /* 设置有效时的背景颜色 */
+  color: rgb(0, 0, 0); /* 设置有效时的文字颜色 */
+}
+
+.form__input:placeholder-shown + .form__label {
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transform: translateY(-4rem);
+  transform: translateY(-4rem);
+}
+
+.container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 810px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin: auto;
+}
+
+.container2 {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 355px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  margin: auto;
+}
+
+.page4
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+.group1{
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+
+
+.s{
+  font-family: 'Noto Serif TC', serif;
+  color: #333;
+  font-size: 1.0rem;
+	margin: 0 auto;
+ 
+  border-radius: 0.2rem;
+  background-color: rgb(250, 224, 238);
+  border: none;
+  width: 355px;
+  display: block;
+  border-bottom: 0.0rem solid transparent;
+  transition: all 0.3s;
+  height: 55px;
+  margin-left: 0;
+  margin-bottom: 20px;
+}
+
+
+
+.selectbar .s {
+  /* Other styles for your select element */
+  overflow-y: auto;
+  max-height: 50px; /* Adjust the max-height as needed */
+}
+
+
+.selectbar__box {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: -4px;
+  display: none;
+  list-style-type: none;
+  text-align: left;
+  font-size: 1em;
+  background-color: #FFF;
+  width: calc(100% + 8px);
+  max-height: 100px; /* Set a maximum height for the dropdown */
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-sizing: border-box;
+}
+
+.selectbar__box__options {
+  display: list-item;
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.2em;
+  color: #838e95;
+  padding: 0.5em 1em;
+  user-select: none;
+}
+
+.selectbar #select-gender {
+  padding-left: 30px; 
+}
+
+.selectbar #select-city {
+  padding-left: 30px; 
+}
+
+p{
+  font-family: 'Noto Serif TC', serif;
+}
+
+.b1
+{
+  margin-top: 10px;
+}
+
+.container3
+{
+  flex-direction: column;
+}
+
+.container4
+{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.b2{
+  margin: auto;
+  margin-top: 20px;
+}
+
+
+
+.s2{
+  width: 150px;
+}
+
+.greet
+{
+  font-family: 'Noto Serif TC', serif;
+  font-size: 15px;
+  margin-left: 800px;
+  margin-top: -50px;
+}
+.container5{
+  overflow-y: scroll;
+  height: 280px;
+}
+
+table {
+  width: 100%; /* Set table width to 100% to fill the container */
+  border-collapse: collapse;
+  height: 120px;
+  overflow-y: scroll;
+  font-family: 'Noto Serif TC', serif;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+
+.found{
+  background-color: #fee6e3;
+}
+
+.lost{
+  background-color: #c6daf8;
+}
+
+.b3{
+  margin-bottom: 15px;
+}
+
+.container5 table thead {
+  position: sticky;
+  top: 0;
+  background-color: #f1f1f1; /* Add a background color for the header */
+  z-index: 1; /* Ensure the header stays above other content */
+}
+
+.container8
+{
+  margin-top: 150px;
+  height: 400px;
+}
+
+.container9
+{
+  margin: 0 auto;
+}
+
+.scrolltable
+{
+  height: 250px;
+  margin-bottom: 30px;
+  overflow-y: auto;
+}
+
+.fixed-header {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2; /* Adjust the background color as needed */
+  z-index: 1;
+}
+
+.fixed-column {
+  position: sticky;
+  left: 0;
+  background-color: #f2f2f2; /* Adjust the background color as needed */
+  z-index: 1;
+}

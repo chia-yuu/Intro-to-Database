@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@500&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+    <h1 class="greet">{{ greeting | safe}}</h1>
+    <h1 class="greet">{{ greeting2 | safe}}</h1>
+    <div class="website">
+        <h1 class="webtitle">{{ title }}</h1>
+        <form action="{{ url_for('index') }}" method="post">
+            <button class="button-56" role="button" type="submit" name="select_option" value="option1">我要申報</button>
+            <button class="button-56" role="button" type="submit" name="select_option" value="option2">我要幫忙</button>
+            <button class="button-56" role="button" type="submit" name="select_option" value="option3">我要登入</button>
+            <button class="button-56" role="button" type="submit" name="select_option" value="option4">其餘資訊</button>
+        </form>
+    </div>
+</body>
+</html>

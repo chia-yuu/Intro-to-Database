@@ -1,0 +1,104 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap");
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="{{ url_for('static', filename='styles.js') }}" defer></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body class="page4">
+    <h1 class="webtitle3">{{ title }}</h1>
+    <form class="container3" action="{{ url_for('register') }}" method="post">
+      <div class="container">
+        <div class="group1">
+          <div class="form__group">
+            <label for="name">1. 姓名</label>
+            <input
+              type="text"
+              class="form__input"
+              name="name"
+              id="name"
+              placeholder="姓名"
+              required=""
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="email">2. 電子郵件</label>
+            <input
+              type="text"
+              class="form__input"
+              name="email"
+              id="email"
+              placeholder="電子郵件"
+              required=""
+            />
+          </div>
+
+          <div class="form__group">
+            <label for="name">3. 密碼</label>
+            <input
+              type="text"
+              class="form__input"
+              name="password"
+              id="password"
+              placeholder="密碼"
+              required=""
+            />
+          </div>
+        </div>
+
+        <div class="group1">
+          <div class="form__group">
+            <label for="phone">4. 電話</label>
+            <input
+              type="text"
+              class="form__input"
+              name="phone"
+              id="phone"
+              placeholder="電話"
+              required=""
+            />
+          </div>
+
+          <div class="selectbar">
+            <label for="select-gender">5. 性別</label>
+            <select class="s" name="select-gender" id="select-gender">
+              <option value="" disabled>性別</option>
+              <option value="男">男</option>
+              <option value="女">女</option>
+            </select>
+          </div>
+
+          <div class="selectbar">
+            <label for="select-city">6. 縣市</label>
+            <select class="s" name="select-city" id="select-city">
+              <option value="" disabled>縣市</option>
+              {% for cities in city_names %}
+              <option value="{{ cities.city_id }}">
+                {{ cities.city_name }}
+              </option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="container9">
+      <button class="b2" type="submit">註冊</button>
+      </div>
+    </form>
+
+    <hr />
+  </body>
+</html>

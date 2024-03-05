@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@500&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+<body>
+    <div class="website">
+        <h1 class="webtitle5">{{ title }}</h1>
+        <div class="container5">
+        
+            <table>
+                <thead>
+                    <tr>
+                        <th>名稱</th>
+                        <th>電話</th>
+                        <th>地址</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for data in shelter_data %}
+                        <tr class="found">
+                            <td>{{ data.shelter_name }}</td>
+                            <td>{{ data.phone }}</td>
+                            <td>{{ data.address }}</td>
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+            
+        </div>
+        
+    </div>
+</body>
+</html>

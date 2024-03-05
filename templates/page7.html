@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@500&display=swap');
+    </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}"/>
+</head>
+
+<body>
+    <div class="website">
+        <h1 class="webtitle4">{{ title }}</h1>
+        <div class="container8">
+        {% if request_found or request_stray %}
+        <div class=scrolltable>
+        <table border="1">
+            <caption class="fixed-header">申報</caption>
+            <thead>
+                <tr>
+                    <th>申報</th>
+                    <th>物種</th>
+                    <th>品種</th>
+                    <th>顏色</th>
+                    <th>地區</th>
+                    <th>城市</th>
+                    <th>時間</th>
+                    <th>性別</th>
+                    <th>已解決</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stray in request_stray %}
+                    <tr>
+                        <td>走失</td>
+                        <td>{{ stray.species_name }}</td>
+                        <td>{{ stray.breed_name }}</td>
+                        <td>{{ stray.color_name }}</td>
+                        <td>{{ stray.region_name }}</td>
+                        <td>{{ stray.city_name }}</td>
+                        <td>{{ stray.date }}</td>
+                        <td>{{ stray.stray_gender }}</td>
+                        <td>{{ stray.solved }}</td>
+                    </tr>
+                {% endfor %}
+                {% for found in request_found %}
+                    <tr>
+                        <td>尋獲</td>
+                        <td>{{ found.species_name }}</td>
+                        <td>{{ found.breed_name }}</td>
+                        <td>{{ found.color_name }}</td>
+                        <td>{{ found.region_name }}</td>
+                        <td>{{ found.city_name }}</td>
+                        <td>{{ found.date }}</td>
+                        <td>{{ found.found_gender }}</td>
+                        <td>{{ found.solved }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+        {% else %}
+            <p>您還沒提交過紀錄!</p>
+        {% endif %}
+    </div>
+    <form method="post" action="{{ url_for('dashboard') }}">
+        <button class="b3" role="button" type="submit" name="select_option" value="option1">點我更新解決狀態</button>
+        <button class="b3" role="button" type="submit" name="select_option" value="option2">點我回首頁</button>
+    </form>
+    </div>
+</body>
+</html>

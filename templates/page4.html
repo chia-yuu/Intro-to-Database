@@ -1,0 +1,41 @@
+<!-- login.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@700&family=Noto+Serif+TC:wght@400;500&display=swap');
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    
+    <script src="{{ url_for('static', filename='styles.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="page4">
+    <h1 class="webtitle3">{{ title }}</h1>
+        <form  action="{{ url_for('login') }}" method="post">
+            <div class="group1 container2">
+
+                <div class="form__group">
+                    <label for="email">1. 電子郵件</label>
+                    <input type="text" class="form__input" name="email" id="email" placeholder="電子郵件" required="" />
+                    
+                </div>
+
+                <div class="form__group">
+                    <label for="name">2. 密碼</label>
+                    <input type="text" class="form__input"name="password" id="password" placeholder="密碼" required="" />   
+                </div>
+                <button class="b1" type="submit">登入</button>  
+            </div>
+              
+        </form>
+        
+        <p>沒有帳戶嗎?<a href="{{ url_for('register') }}">點此註冊</a></p>
+        <hr>
+      
+</body>
+</html>
